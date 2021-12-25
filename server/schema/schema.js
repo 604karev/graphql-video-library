@@ -110,7 +110,53 @@ const Mutation = new GraphQLObjectType({
                 });
                 return movie.save();
             }
-        }
+        },
+        deleteDirector: {
+            type: DirectorType,
+            args: {id: {type: GraphQLID}},
+            resolve(parent, args) {
+                return Directors.findOneAndDelete({_id: args.id})
+            }
+        },
+        deleteMovie: {
+            type: MovieType,
+            args: {id: {type: GraphQLID}},
+            resolve(parent, args) {
+                return Movies.findOneAndDelete({_id: args.id})
+            }
+        },
+        updateDirector: {
+            type: DirectorType,
+            args: {
+                id: {type: GraphQLID},
+                name: {type: GraphQLString},
+                age: {type: GraphQLInt},
+            },
+            resolve(parent, args) {
+                return Directors.findOneAndUpdate(
+                    {_id: args.id},
+                    {$set: {name: args.name, age: args.age}},
+                    {new: true, useFindAndModify: false}
+                )
+            }
+        },
+        updateMovie: {
+            type: MovieType,
+            args: {
+                id: {type: GraphQLID},
+                name: {type: GraphQLString},
+                genre: {type: GraphQLString},
+                directorId: {type: GraphQLID},
+            },
+            resolve(parent, args) {
+                const {_id: movieId, ...movieProps} = args;
+                return Movies.findOneAndUpdate(
+                    movieId,
+                    {$set: {...movieProps}},
+                    {new: true, useFindAndModify: false}
+                )
+            }
+        },
     }
 });
 
