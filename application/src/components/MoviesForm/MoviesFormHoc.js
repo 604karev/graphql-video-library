@@ -4,6 +4,7 @@ import {graphql} from "react-apollo";
 import {addMovieMutation} from './mumations'
 import {moviesQuery} from '../MoviesTable/queries'
 import {directorsQuery} from './queries'
+import {directorsQuery as directorQuery} from '../DirectorsTable/queries'
 
 import { styles } from './styles';
 
@@ -12,7 +13,7 @@ const withGraphqlAdd = graphql(addMovieMutation, {
     props: ({mutate}) => ({
         addMovie: movie => mutate({
             variables: movie,
-            refetchQueries: [{query: moviesQuery}]
+            refetchQueries: [{query: moviesQuery},{query: directorQuery}]
         })
     })
 
