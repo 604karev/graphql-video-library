@@ -5,11 +5,6 @@ export const directorsQuery = gql`
         directors{
             id
             name
-            age
-            movies{
-                id
-                name
-            }
         }
     }
 `;
