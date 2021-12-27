@@ -1,7 +1,7 @@
 import { withStyles } from '@material-ui/core/styles';
 import { compose } from 'recompose';
 import {graphql} from "react-apollo";
-import {addMovieMutation} from './mumations'
+import {addMovieMutation} from './mutations'
 import {moviesQuery} from '../MoviesTable/queries'
 import {directorsQuery} from './queries'
 import {directorsQuery as directorQuery} from '../DirectorsTable/queries'
