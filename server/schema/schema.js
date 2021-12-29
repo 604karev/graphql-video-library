@@ -68,15 +68,15 @@ const Mutation = new GraphQLObjectType({
         deleteDirector: {
             type: DirectorType,
             args: {id: {type: GraphQLID}},
-            resolve(parent, args) {
-                return Directors.findOneAndDelete({_id: args.id})
+            resolve(parent, {id}) {
+                return Directors.findOneAndDelete({_id: id})
             }
         },
         deleteMovie: {
             type: MovieType,
             args: {id: {type: GraphQLID}},
-            resolve(parent, args) {
-                return Movies.findOneAndDelete({_id: args.id})
+            resolve(parent, {id}) {
+                return Movies.findOneAndDelete({_id: id})
             }
         },
         updateDirector: {
