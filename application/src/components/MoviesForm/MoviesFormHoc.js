@@ -9,13 +9,21 @@ import {directorsQuery as directorQuery} from '../DirectorsTable/queries'
 import {styles} from './styles';
 
 
-
 const withGraphQL = compose(
     graphql(addMovieMutation, {
         props: ({mutate}) => ({
             addMovie: movie => mutate({
                 variables: movie,
-                refetchQueries: [{query: moviesQuery}, {query: directorQuery}]
+                refetchQueries: [{
+                    query: moviesQuery,
+                    variables: {name: ''}
+                },
+                    {
+                        query: directorQuery,
+                        variables: {name: ''}
+                    },
+
+                ]
             })
         })
 
@@ -24,10 +32,24 @@ const withGraphQL = compose(
         props: ({mutate}) => ({
             updateMovie: movie => mutate({
                 variables: movie,
-                refetchQueries: [{query: moviesQuery}, {query: directorQuery}]
+                refetchQueries: [{
+                    query: moviesQuery,
+                    variables: {name: ''}
+                },
+                    {
+                        query: directorQuery,
+                        variables: {name: ''}
+                    }
+                ]
             })
         })
 
+    }),
+    graphql(directorsQuery, {
+        options: ({name = ''}) => ({
+            variables: {name}
+        })
+
     })
-)
-export default compose(withStyles(styles), withGraphQL, graphql(directorsQuery));
+);
+export default compose(withStyles(styles), withGraphQL);
