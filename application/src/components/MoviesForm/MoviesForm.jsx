@@ -21,24 +21,31 @@ class MoviesForm extends React.Component {
     };
 
     handleSave = () => {
-        const {selectedValue, onClose, addMovie} = this.props;
+        const {selectedValue, onClose, addMovie, updateMovie} = this.props;
         const {id, name, genre, rate, directorId, watched} = selectedValue;
-        addMovie({
-            id,
-            name,
-            genre,
-            directorId,
-            rate: Number(rate),
-            watched: Boolean(watched)
-        });
+        id ? updateMovie({
+                id,
+                name,
+                genre,
+                directorId,
+                rate: Number(rate),
+                watched: Boolean(watched)
+            }) :
+            addMovie({
+                name,
+                genre,
+                directorId,
+                rate: Number(rate),
+                watched: Boolean(watched)
+            });
         onClose();
     };
 
     render() {
+
         const {data = {}, classes, open, handleChange, handleSelectChange, handleCheckboxChange, selectedValue = {}} = this.props;
         const {name, genre, rate, directorId, watched} = selectedValue;
         const {directors = []} = data;
-
         return (
             <Dialog onClose={this.handleClose} open={open} aria-labelledby="simple-dialog-title">
                 <DialogTitle className={classes.title} id="simple-dialog-title">Movie information</DialogTitle>

@@ -88,7 +88,7 @@ const Mutation = new GraphQLObjectType({
             },
             resolve(parent, {id, name, age}) {
                 return Directors.findOneAndUpdate(
-                    id,
+                    {_id: id},
                     {$set: {name, age}},
                     {new: true, useFindAndModify: false}
                 )
@@ -106,7 +106,7 @@ const Mutation = new GraphQLObjectType({
             },
             resolve(parent, {id, ...movieProps}) {
                 return Movies.findOneAndUpdate(
-                    id,
+                    {_id: id},
                     {$set: {...movieProps}},
                     {new: true, useFindAndModify: false}
                 )
