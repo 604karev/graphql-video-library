@@ -122,6 +122,6 @@ class DirectorsTable extends React.Component {
             </>
         );
     }
-};
+}
 
 export default withHocs(DirectorsTable);
