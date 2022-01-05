@@ -6,7 +6,7 @@ import ApolloClient from 'apollo-boost'
 import {ApolloProvider} from 'react-apollo'
 
 const client = new ApolloClient({
-    uri: `https://frozen-stream-24570.herokuapp.com/graphql`
+    uri: `http://localhost:3005/graphql`
 });
 
 
