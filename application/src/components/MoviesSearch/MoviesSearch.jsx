@@ -4,29 +4,29 @@ import SearchIcon from '@material-ui/icons/Search';
 
 import withHocs from './MoviesSearchHoc';
 
-class MoviesSearch extends React.Component {
+const MoviesSearch = (props) => {
 
-    render() {
-        const {classes, name, handleChange, handleSearch} = this.props;
 
-        return (
-            <div className={classes.search}>
-                <div className={classes.searchIcon}>
-                    <SearchIcon/>
-                </div>
-                <InputBase
-                    onChange={handleChange('name')}
-                    value={name}
-                    onKeyPress={e => handleSearch(e)}
-                    placeholder="Search…"
-                    classes={{
-                        root: classes.inputRoot,
-                        input: classes.inputInput,
-                    }}
-                />
+    const { classes, name, handleChange, handleSearch } = props;
+
+    return (
+        <div className={classes.search}>
+            <div className={classes.searchIcon}>
+                <SearchIcon />
             </div>
-        );
-    }
+            <InputBase
+                onChange={handleChange('name')}
+                value={name}
+                onKeyPress={e => handleSearch(e)}
+                placeholder="Search…"
+                classes={{
+                    root: classes.inputRoot,
+                    input: classes.inputInput,
+                }}
+            />
+        </div>
+    );
+
 };
 
 export default withHocs(MoviesSearch);

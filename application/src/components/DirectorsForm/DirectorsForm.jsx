@@ -7,55 +7,55 @@ import SaveIcon from '@material-ui/icons/Save';
 
 import withHocs from './DirectorsFormHoc';
 
-class DirectorsForm extends React.Component {
-    handleClose = () => {
-        this.props.onClose();
+const DirectorsForm = (props) => {
+   const handleClose = () => {
+        props.onClose();
     };
 
-    handleSave = () => {
-        const {selectedValue, onClose, addDirector, updateDirector} = this.props;
-        const {id, name, age} = selectedValue;
-        id ? updateDirector({id, name, age: Number(age)}) : addDirector({name, age: Number(age)});
+   const handleSave = () => {
+        const { selectedValue, onClose, addDirector, updateDirector } = props;
+        const { id, name, age } = selectedValue;
+        id ? updateDirector({ id, name, age: Number(age) }) : addDirector({ name, age: Number(age) });
         onClose();
     };
 
-    render() {
-        const {classes, open, handleChange, selectedValue = {}} = this.props;
-        const {name, age} = selectedValue;
 
-        return (
-            <Dialog onClose={this.handleClose} open={open} aria-labelledby="simple-dialog-title">
-                <DialogTitle className={classes.title} id="simple-dialog-title">Director information</DialogTitle>
-                <form className={classes.container} noValidate autoComplete="off">
-                    <TextField
-                        id="outlined-name"
-                        label="Name"
-                        className={classes.textField}
-                        value={name}
-                        onChange={handleChange('name')}
-                        margin="normal"
-                        variant="outlined"
-                    />
-                    <TextField
-                        id="outlined-rate"
-                        label="Age"
-                        className={classes.textField}
-                        value={age}
-                        onChange={handleChange('age')}
-                        type="number"
-                        margin="normal"
-                        variant="outlined"
-                    />
-                    <div className={classes.wrapper}>
-                        <Button onClick={this.handleSave} variant="contained" color="primary"
-                                className={classes.button}>
-                            <SaveIcon/> Save
-                        </Button>
-                    </div>
-                </form>
-            </Dialog>
-        );
-    }
+    const { classes, open, handleChange, selectedValue = {} } = props;
+    const { name, age } = selectedValue;
+
+    return (
+        <Dialog onClose={handleClose} open={open} aria-labelledby="simple-dialog-title">
+            <DialogTitle className={classes.title} id="simple-dialog-title">Director information</DialogTitle>
+            <form className={classes.container} noValidate autoComplete="off">
+                <TextField
+                    id="outlined-name"
+                    label="Name"
+                    className={classes.textField}
+                    value={name}
+                    onChange={handleChange('name')}
+                    margin="normal"
+                    variant="outlined"
+                />
+                <TextField
+                    id="outlined-rate"
+                    label="Age"
+                    className={classes.textField}
+                    value={age}
+                    onChange={handleChange('age')}
+                    type="number"
+                    margin="normal"
+                    variant="outlined"
+                />
+                <div className={classes.wrapper}>
+                    <Button onClick={handleSave} variant="contained" color="primary"
+                        className={classes.button}>
+                        <SaveIcon /> Save
+                    </Button>
+                </div>
+            </form>
+        </Dialog>
+    );
+
 }
 
 export default withHocs(DirectorsForm);
