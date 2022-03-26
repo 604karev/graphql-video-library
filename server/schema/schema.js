@@ -28,7 +28,7 @@ const DirectorType = new GraphQLObjectType({
         name: {type: GraphQLString},
         age: {type: GraphQLInt},
         movies: {
-            type: GraphQLList(MovieType),
+            type: new GraphQLList(MovieType),
             resolve({id}, args) {
                 return Movies.find({directorId: id})
             }
@@ -135,14 +135,14 @@ const Query = new GraphQLObjectType({
             }
         },
         movies: {
-            type: GraphQLList(MovieType),
+            type: new GraphQLList(MovieType),
             args: {name: {type: GraphQLString}},
             resolve(parent, {name}) {
                 return Movies.find({name: {$regex: name, $options: "i"}})
             }
         },
         directors: {
-            type: GraphQLList(DirectorType),
+            type: new GraphQLList(DirectorType),
             args: {name: {type: GraphQLString}},
             resolve(parent, {name}) {
                 return Directors.find({name: {$regex: name, $options: "i"}})

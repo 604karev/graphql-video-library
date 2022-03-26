@@ -19,7 +19,6 @@ const Movies = (props) => {
   const { id, name, genre, watched, rate, directorId, open } = state;
   const { classes } = props;
 
-
   const handleClickOpen = (data = {}) => {
     setState({
       open: true,
