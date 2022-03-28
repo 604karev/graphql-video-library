@@ -20,8 +20,9 @@ const TabContainer = ({ children, dir }) => (
 const SimpleTabs = (props) => {
   const [value, setValue] = useState(0)
   const { classes, theme } = props;
-  const handleChange = (event, value) => { setValue( value ); };
-  const handleChangeIndex = index => { setValue({ value: index }); }; 
+  const handleChange = (event, value) => setValue(value);
+  const handleChangeIndex = index => setValue(index);
+
 
   return (
     <div className={classes.root}>
@@ -31,7 +32,10 @@ const SimpleTabs = (props) => {
           <Tab label="Directors" icon={<MovieCreationIcon />} />
         </Tabs>
       </AppBar>
-      <SwipeableViews axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'} index={value} onChangeIndex={handleChangeIndex} >
+      <SwipeableViews containerStyle={{
+        transition: 'transform 0.35s cubic-bezier(0.15, 0.3, 0.25, 1) 0s'
+      }}
+        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'} index={value} onChangeIndex={handleChangeIndex} >
         <TabContainer dir={theme.direction}><Movies /></TabContainer>
         <TabContainer dir={theme.direction}><Directors /></TabContainer>
       </SwipeableViews>
