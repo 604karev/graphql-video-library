@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-
 import DirectorsTable from '../DirectorsTable/DirectorsTable';
 import DirectorsForm from '../DirectorsForm/DirectorsForm';
+import { lazyStateChange } from "../Movies/Movies";
 
 import withHocs from './DirectorsHoc';
 
@@ -33,8 +32,10 @@ const Directors = (props) => {
     });
   };
 
-  const lazyStateChange = (name, value) => { setState(state => ({ ...state, ...{ [name]: value } })) };
-  const handleChange = name => ({ target }) => { lazyStateChange(name, target.value) };
+
+  const handleChange = name => ({ target }) => {
+    lazyStateChange(name, target.value, setState)
+  };
 
 
   const { name, age, id, open } = state;

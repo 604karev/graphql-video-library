@@ -7,6 +7,8 @@ import MoviesForm from '../MoviesForm/MoviesForm';
 
 import withHocs from './MoviesHoc';
 
+export const lazyStateChange = (name, value, stateSetter) => { stateSetter(state => ({ ...state, ...{ [name]: value } })) };
+
 const Movies = (props) => {
   const [state, setState] = useState({
     open: false,
@@ -40,10 +42,10 @@ const Movies = (props) => {
       open: false
     });
   };
-  const lazyStateChange = (name, value) => { setState(state => ({ ...state, ...{ [name]: value } })) };
-  const handleSelectChange = ({ target }) => { lazyStateChange(target.name, target.value) };
-  const handleCheckboxChange = name => ({ target }) => { lazyStateChange(name, target.checked) };
-  const handleChange = name => ({ target }) => { lazyStateChange(name, target.value) };
+
+  const handleSelectChange = ({ target }) => { lazyStateChange(target.name, target.value, setState) };
+  const handleCheckboxChange = name => ({ target }) => { lazyStateChange(name, target.checked, setState) };
+  const handleChange = name => ({ target }) => { lazyStateChange(name, target.value, setState) };
   
   return (
     <>
