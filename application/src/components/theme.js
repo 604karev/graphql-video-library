@@ -1,8 +1,8 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 import blue from '@material-ui/core/colors/blue';
 import red from '@material-ui/core/colors/red';
 
-export default createMuiTheme({
+export default createTheme({
   typography: {
     useNextVariants: true,
     color: '#fff',
@@ -17,5 +17,13 @@ export default createMuiTheme({
     contrastThreshold: 3,
     tonalOffset: 0.2,
     contrastText: '#fff',
-  }
+  },
+  overrides: {
+    MuiTableCell: {
+      root: {
+        padding: '4px 20px',
+        blockSize: '48px'
+      },
+    },
+  },
 });
