@@ -18,6 +18,7 @@ const Directors = (props) => {
 
   const handleClickOpen = (data) => {
     setState({
+      ...state,
       open: true,
       ...data,
     });

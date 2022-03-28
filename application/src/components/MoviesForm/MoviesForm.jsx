@@ -47,7 +47,7 @@ const MoviesForm = (props) => {
     const { data = {}, classes, open, handleChange, handleSelectChange, handleCheckboxChange, selectedValue = {} } = props;
     const { name, genre, rate, directorId, watched } = selectedValue;
     const { directors = [] } = data;
-    console.log(selectedValue)
+    // console.log(props)
     return (
         <Dialog onClose={handleClose} open={open} aria-labelledby="simple-dialog-title">
             <DialogTitle className={classes.title} id="simple-dialog-title">Movie information</DialogTitle>

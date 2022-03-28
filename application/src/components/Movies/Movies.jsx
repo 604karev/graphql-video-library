@@ -20,12 +20,15 @@ const Movies = (props) => {
   const { classes } = props;
 
   const handleClickOpen = (data = {}) => {
+   
     setState({
-      open: true,
+      ...state,
+      open: true,      
       ...data,
       directorId: data.director ? data.director.id : '',
     });
   };
+
 
   const handleClose = () => {
     setState({
@@ -41,7 +44,7 @@ const Movies = (props) => {
   const handleSelectChange = ({ target }) => { lazyStateChange(target.name, target.value) };
   const handleCheckboxChange = name => ({ target }) => { lazyStateChange(name, target.checked) };
   const handleChange = name => ({ target }) => { lazyStateChange(name, target.value) };
-
+  
   return (
     <>
       <MoviesForm handleChange={handleChange}
@@ -52,7 +55,7 @@ const Movies = (props) => {
         onClose={handleClose} />
       <div className={classes.wrapper}>
         <MoviesTable onOpen={handleClickOpen} onClose={handleClose} />
-        <Fab onClick={() => handleClickOpen()} color="primary" aria-label="Add" className={classes.fab}>
+        <Fab onClick={()=>handleClickOpen()} color="primary" aria-label="Add" className={classes.fab}>
           <AddIcon />
         </Fab>
       </div>
