@@ -1,28 +1,29 @@
-import { createTheme } from '@material-ui/core/styles';
-import blue from '@material-ui/core/colors/blue';
-import red from '@material-ui/core/colors/red';
+import { createTheme } from "@mui/material/styles";
+import blue from "@mui/material/colors/blue";
+import red from "@mui/material/colors/red";
 
 export default createTheme({
   typography: {
     useNextVariants: true,
-    color: '#fff',
+    color: "#fff",
   },
   palette: {
-    type: 'dark',
+    type: "dark",
     primary: {
-      main: '#E535AB'
+      main: "#E535AB",
     },
     secondary: blue,
     error: red,
+    text: "#FFF",
     contrastThreshold: 3,
     tonalOffset: 0.2,
-    contrastText: '#fff',
+    contrastText: "#fff",
   },
   overrides: {
     MuiTableCell: {
       root: {
-        padding: '4px 20px',
-        blockSize: '48px'
+        padding: "4px 20px",
+        blockSize: "48px",
       },
     },
   },

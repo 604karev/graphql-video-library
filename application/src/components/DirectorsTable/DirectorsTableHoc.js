@@ -1,4 +1,4 @@
-import {withStyles} from '@material-ui/core/styles';
+import { withStyles } from '@mui/styles';
 import {compose} from 'recompose';
 import {graphql} from "react-apollo";
 import {directorsQuery} from './queries'

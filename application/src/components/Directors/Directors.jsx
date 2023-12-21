@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
 import DirectorsTable from '../DirectorsTable/DirectorsTable';
 import DirectorsForm from '../DirectorsForm/DirectorsForm';
 import { lazyStateChange } from "../Movies/Movies";

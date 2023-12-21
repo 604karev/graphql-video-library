@@ -5,8 +5,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import BlockIcon from '@material-ui/icons/Block';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import BlockIcon from '@mui/icons-material/Block';
 
 import withHoc from './MoviesDialogHoc';
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import InputBase from '@material-ui/core/InputBase';
-import SearchIcon from '@material-ui/icons/Search';
+import InputBase from '@mui/material/InputBase';
+import SearchIcon from '@mui/icons-material/Search';
 
 import withHocs from './DirectorsSearchHoc';
 
@@ -19,8 +19,8 @@ const DirectorsSearch = (props) => {
                 onKeyPress={e => handleSearch(e)}
                 placeholder="Search…"
                 classes={{
-                    root: classes.inputRoot,
-                    input: classes.inputInput,
+                    root: classes.inputInput,
+                    input: classes.inputRoot,
                 }}
             />
         </div>

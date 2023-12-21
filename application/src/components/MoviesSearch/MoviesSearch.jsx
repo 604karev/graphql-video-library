@@ -1,32 +1,29 @@
-import React from 'react';
-import InputBase from '@material-ui/core/InputBase';
-import SearchIcon from '@material-ui/icons/Search';
+import React from "react";
+import InputBase from "@mui/material/InputBase";
+import SearchIcon from "@mui/icons-material/Search";
 
-import withHocs from './MoviesSearchHoc';
+import withHocs from "./MoviesSearchHoc";
 
 const MoviesSearch = (props) => {
+  const { classes, name, handleChange, handleSearch } = props;
 
-
-    const { classes, name, handleChange, handleSearch } = props;
-
-    return (
-        <div className={classes.search}>
-            <div className={classes.searchIcon}>
-                <SearchIcon />
-            </div>
-            <InputBase
-                onChange={handleChange('name')}
-                value={name}
-                onKeyPress={e => handleSearch(e)}
-                placeholder="Search…"
-                classes={{
-                    root: classes.inputRoot,
-                    input: classes.inputInput,
-                }}
-            />
-        </div>
-    );
-
+  return (
+    <div className={classes.search}>
+      <div className={classes.searchIcon}>
+        <SearchIcon />
+      </div>
+      <InputBase
+        onChange={handleChange("name")}
+        value={name}
+        onKeyPress={(e) => handleSearch(e)}
+        placeholder="Search…"
+        classes={{
+          root: classes.inputInput,
+          input: classes.inputRoot,
+        }}
+      />
+    </div>
+  );
 };
 
 export default withHocs(MoviesSearch);
