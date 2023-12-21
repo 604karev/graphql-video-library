@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+import { Schema as _Schema, model } from 'mongoose';
+const Schema = _Schema;
 
 const movieSchema = new Schema({
     name: String,
@@ -10,4 +10,4 @@ const movieSchema = new Schema({
 
 });
 
-module.exports = mongoose.model('Movie', movieSchema);
+export default model('Movie', movieSchema);
