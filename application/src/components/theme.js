@@ -19,11 +19,40 @@ export default createTheme({
     tonalOffset: 0.2,
     contrastText: "#fff",
   },
-  overrides: {
+  components: {
+    MuiFab: {
+      styleOverrides: {
+        root: {
+          position: "absolute",
+          right: 0,
+          bottom: 0,
+        },
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          backgroundColor: "#424242",
+          color: "#fff",
+        },
+      },
+    },
     MuiTableCell: {
-      root: {
-        padding: "4px 20px",
-        blockSize: "48px",
+      styleOverrides: {
+        root: {
+          padding: "4px 20px",
+          blockSize: "48px",
+          borderColor: "#515151",
+        },
+      },
+    },
+    MuiCheckbox: {
+      styleOverrides: {
+        root: {
+          "&.Mui-disabled": {
+            color: "#ffffff4d",
+          },
+        },
       },
     },
   },
