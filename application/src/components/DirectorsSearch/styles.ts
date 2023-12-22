@@ -1,4 +1,4 @@
-export const styles = theme => ({
+export const styles = (theme:any) => ({
   search: {
     position: 'relative',
     width: '100%',
@@ -22,6 +22,5 @@ export const styles = theme => ({
     paddingRight: theme.spacing(2),
     paddingBottom: theme.spacing(2),
     paddingLeft: theme.spacing(6),
-  
   },
 });

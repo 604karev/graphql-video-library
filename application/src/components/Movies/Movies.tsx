@@ -6,15 +6,14 @@ import MoviesTable from "../MoviesTable/MoviesTable";
 import MoviesForm from "../MoviesForm/MoviesForm";
 
 import { Box } from "@mui/material";
-import withHocs from './MoviesHoc';
+import withHocs from "./MoviesHoc";
 
-
-export const lazyStateChange = (name, value, stateSetter) => {
-  stateSetter((state) => ({ ...state, ...{ [name]: value } }));
+export const lazyStateChange = (name: any, value: any, stateSetter: any) => {
+  stateSetter((state: any) => ({ ...state, ...{ [name]: value } }));
 };
 
-const Movies = (props) => {
-  const [state, setState] = useState({
+const Movies = (props: any) => {
+  const [state, setState] = useState<any>({
     open: false,
     name: "",
     genre: "",
@@ -24,7 +23,7 @@ const Movies = (props) => {
   });
   const { id, name, genre, watched, rate, directorId, open } = state;
 
-  const handleClickOpen = (data = {}) => {
+  const handleClickOpen = (data: any = {}) => {
     setState({
       ...state,
       open: true,
@@ -44,17 +43,17 @@ const Movies = (props) => {
     });
   };
 
-  const handleSelectChange = ({ target }) => {
+  const handleSelectChange = ({ target }: any) => {
     lazyStateChange(target.name, target.value, setState);
   };
   const handleCheckboxChange =
-    (name) =>
-    ({ target }) => {
+    (name: any) =>
+    ({ target }: any) => {
       lazyStateChange(name, target.checked, setState);
     };
   const handleChange =
-    (name) =>
-    ({ target }) => {
+    (name: any) =>
+    ({ target }: any) => {
       lazyStateChange(name, target.value, setState);
     };
 
@@ -75,11 +74,7 @@ const Movies = (props) => {
         }}
       >
         <MoviesTable onOpen={handleClickOpen} onClose={handleClose} />
-        <Fab
-          onClick={() => handleClickOpen()}
-          color="primary"
-          aria-label="Add"
-        >
+        <Fab onClick={() => handleClickOpen()} color="primary" aria-label="Add">
           <AddIcon />
         </Fab>
       </Box>
@@ -87,4 +82,4 @@ const Movies = (props) => {
   );
 };
 
-export default withHocs(Movies)
+export default withHocs(Movies);

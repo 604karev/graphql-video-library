@@ -1,20 +1,24 @@
-import React from 'react';
+import React from "react";
 
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import BlockIcon from "@mui/icons-material/Block";
 
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import BlockIcon from '@mui/icons-material/Block';
+import withHoc from "./MoviesDialogHoc";
+import {
+  ButtonBase,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from "@mui/material";
 
-import withHoc from './MoviesDialogHoc';
-import { ButtonBase, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
-
-const MoviesDialog = (props) => {
-
+const MoviesDialog = (props: any) => {
   const handleDelete = () => {
     const { id, handleClose, deleteMovie } = props;
     deleteMovie(id);
     handleClose();
-  }
-
+  };
 
   const { open, handleClose } = props;
 
@@ -25,7 +29,9 @@ const MoviesDialog = (props) => {
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
-      <DialogTitle id="alert-dialog-title">{"Are you sire that you want to delete element?"}</DialogTitle>
+      <DialogTitle id="alert-dialog-title">
+        {"Are you sire that you want to delete element?"}
+      </DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-description">
           If you click 'Confirm' this element will be removed from data base.
@@ -41,7 +47,6 @@ const MoviesDialog = (props) => {
       </DialogActions>
     </Dialog>
   );
-
-}
+};
 
 export default withHoc(MoviesDialog);

@@ -4,19 +4,17 @@ import AddIcon from "@mui/icons-material/Add";
 import DirectorsTable from "../DirectorsTable/DirectorsTable";
 import DirectorsForm from "../DirectorsForm/DirectorsForm";
 import { lazyStateChange } from "../Movies/Movies";
-import withHocs from './DirectorsHoc';
+import withHocs from "./DirectorsHoc";
 import { Box } from "@mui/material";
 
-
-
-const Directors = (props) => {
-  const [state, setState] = useState({
+const Directors = (props: any) => {
+  const [state, setState] = useState<any>({
     open: false,
     name: "",
     age: 0,
   });
 
-  const handleClickOpen = (data) => {
+  const handleClickOpen = (data: any) => {
     setState({
       ...state,
       open: true,
@@ -34,8 +32,8 @@ const Directors = (props) => {
   };
 
   const handleChange =
-    (name) =>
-    ({ target }) => {
+    (name: string) =>
+    ({ target }: any) => {
       lazyStateChange(name, target.value, setState);
     };
 

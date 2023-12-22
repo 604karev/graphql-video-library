@@ -1,4 +1,4 @@
-export const styles = theme => ({
+export const styles = (theme:any) => ({
   searchRoot: {
     marginBottom: theme.spacing(3),
     minHeight: theme.spacing(6),

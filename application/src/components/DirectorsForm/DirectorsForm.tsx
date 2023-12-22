@@ -8,7 +8,7 @@ import withHocs from "./DirectorsFormHoc";
 import { ButtonBase } from "@mui/material";
 import theme from "../theme";
 
-const DirectorsForm = (props) => {
+const DirectorsForm = (props: any):any => {
   const handleClose = () => {
     props.onClose();
   };
@@ -58,7 +58,6 @@ const DirectorsForm = (props) => {
           <ButtonBase
             sx={{ backgroundColor: theme.palette.primary.main }}
             onClick={handleSave}
-            variant="contained"
             color="primary"
             className={classes.button}
           >

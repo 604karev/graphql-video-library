@@ -11,17 +11,17 @@ import Directors from "../Directors/Directors";
 
 import withHocs from "./TabsHoc";
 
-const TabContainer = ({ children, dir }) => (
+const TabContainer = ({ children, dir }: any) => (
   <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
     {children}
   </Typography>
 );
 
-const SimpleTabs = (props) => {
+const SimpleTabs = (props: any) => {
   const [value, setValue] = useState(0);
   const { classes, theme } = props;
-  const handleChange = (event, value) => setValue(value);
-  const handleChangeIndex = (index) => setValue(index);
+  const handleChange = (event: any, value: any) => setValue(value);
+  const handleChangeIndex = (index: any) => setValue(index);
 
   return (
     <div className={classes.root}>

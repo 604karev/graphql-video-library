@@ -14,7 +14,7 @@ export default createTheme({
     },
     secondary: blue,
     error: red,
-    text: "#FFF",
+    text: "#FFFFFF",
     contrastThreshold: 3,
     tonalOffset: 0.2,
     contrastText: "#fff",
@@ -56,4 +56,4 @@ export default createTheme({
       },
     },
   },
-});
+} as any);

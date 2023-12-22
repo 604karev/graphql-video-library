@@ -1,23 +1,21 @@
-import React from 'react';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import BlockIcon from '@mui/icons-material/Block';
+import React from "react";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import BlockIcon from "@mui/icons-material/Block";
 
-import withHoc from './DirectorsDialogHoc'
+import withHoc from "./DirectorsDialogHoc";
 
-const DirectorsDialog = (props) => {
-
+const DirectorsDialog = (props: any):any => {
   const handleDelete = () => {
     const { id, handleClose, deleteDirector } = props;
     deleteDirector(id);
     handleClose();
   };
-
 
   const { open, handleClose } = props;
 
@@ -28,7 +26,9 @@ const DirectorsDialog = (props) => {
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
-      <DialogTitle id="alert-dialog-title">{"Are you sire that you want to delete element?"}</DialogTitle>
+      <DialogTitle id="alert-dialog-title">
+        {"Are you sire that you want to delete element?"}
+      </DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-description">
           If you click 'Confirm' this element will be removed from data base.
@@ -44,7 +44,6 @@ const DirectorsDialog = (props) => {
       </DialogActions>
     </Dialog>
   );
-
-}
+};
 
 export default withHoc(DirectorsDialog);

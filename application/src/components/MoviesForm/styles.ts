@@ -1,4 +1,4 @@
-export const styles = theme => ({
+export const styles = (theme: any) => ({
   container: {
     padding: theme.spacing(2),
   },
@@ -6,22 +6,21 @@ export const styles = theme => ({
     paddingBottom: 0,
   },
   textField: {
-    width: '100%',
+    width: "100%",
   },
   formControl: {
     minWidth: 120,
   },
   formControlSelect: {
     marginTop: theme.spacing(2),
-    width: '100%',
+    width: "100%",
   },
   wrapper: {
     marginTop: theme.spacing(2),
-    display: 'flex',
-    justifyContent: 'space-between',
+    display: "flex",
+    justifyContent: "space-between",
   },
   button: {
     minWidth: 100,
-    
-  }
+  },
 });

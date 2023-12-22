@@ -16,7 +16,7 @@ import withHocs from "./MoviesFormHoc";
 import { ButtonBase } from "@mui/material";
 import theme from "../theme";
 
-const MoviesForm = (props) => {
+const MoviesForm = (props:any) => {
   const inputEl = useRef(null);
   const handleClose = () => {
     props.onClose();
@@ -101,15 +101,9 @@ const MoviesForm = (props) => {
           <Select
             value={directorId}
             onChange={handleSelectChange}
-            input={
-              <OutlinedInput
-                name="directorId"
-                id="outlined-director"
-                labelWidth={57}
-              />
-            }
+            input={<OutlinedInput name="directorId" id="outlined-director" />}
           >
-            {directors.map((director) => (
+            {directors.map((director: any) => (
               <MenuItem key={director.id} value={director.id}>
                 {director.name}
               </MenuItem>
@@ -130,7 +124,6 @@ const MoviesForm = (props) => {
           <ButtonBase
             sx={{ backgroundColor: theme.palette.primary.main }}
             onClick={handleSave}
-            variant="contained"
             color="primary"
             className={classes.button}
           >

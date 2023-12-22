@@ -4,7 +4,7 @@ import SearchIcon from "@mui/icons-material/Search";
 
 import withHocs from "./MoviesSearchHoc";
 
-const MoviesSearch = (props) => {
+const MoviesSearch = (props:any):any => {
   const { classes, name, handleChange, handleSearch } = props;
 
   return (
