@@ -6,10 +6,25 @@ import {
   GraphQLInt,
   GraphQLList,
   GraphQLBoolean,
+  GraphQLNonNull,
 } from "graphql";
 
 import Movies from "../models/movie";
 import Directors from "../models/director";
+import User from "../models/user";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
+import { ApolloError } from "apollo-server-express";
+
+const UserType = new GraphQLObjectType({
+  name: "User",
+  fields: () => ({
+    id: { type: new GraphQLNonNull(GraphQLString) },
+    username: { type: new GraphQLNonNull(GraphQLString) },
+    email: { type: new GraphQLNonNull(GraphQLString) },
+    token: { type: GraphQLString },
+  }),
+});
 
 const MovieType: any = new GraphQLObjectType({
   name: "Movie",
@@ -119,6 +134,57 @@ const Mutation = new GraphQLObjectType({
         );
       },
     },
+    register: {
+      type: UserType,
+      args: {
+        username: { type: new GraphQLNonNull(GraphQLString) },
+        email: { type: new GraphQLNonNull(GraphQLString) },
+        password: { type: new GraphQLNonNull(GraphQLString) },
+      },
+      async resolve(_, { username, email, password }) {
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+          throw new ApolloError("User already exists");
+        }
+
+        // Hash password and create user
+        const hashedPassword = await bcrypt.hash(password, 12);
+        const user = new User({ username, email, password: hashedPassword });
+        await user.save();
+
+        // Generate JWT token
+        const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET!, {
+          expiresIn: "1h",
+        });
+
+        return { ...user.toObject(), id: user._id, token };
+      },
+    },
+    login: {
+      type: UserType,
+      args: {
+        email: { type: new GraphQLNonNull(GraphQLString) },
+        password: { type: new GraphQLNonNull(GraphQLString) },
+      },
+      async resolve(_, { email, password }) {
+        const user = await User.findOne({ email });
+        if (!user) {
+          throw new ApolloError("User does not exist");
+        }
+
+        const isValid = await bcrypt.compare(password, user.password!);
+        if (!isValid) {
+          throw new ApolloError("Invalid password");
+        }
+
+        // Generate JWT token
+        const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET!, {
+          expiresIn: "1h",
+        });
+
+        return { ...user.toObject(), id: user._id, token };
+      },
+    },
   },
 });
 
@@ -152,6 +218,16 @@ const Query = new GraphQLObjectType({
       resolve(parent, { name }) {
         return Directors.find({ name: { $regex: name, $options: "i" } });
       },
+    },
+    me: {
+      type: UserType,
+      resolve(parent, args, context) {
+        // Assuming the context will have the user information if authenticated
+        if (!context.user) {
+          throw new ApolloError('Not Authenticated');
+        }
+        return context.user;
+      }
     },
   },
 });
