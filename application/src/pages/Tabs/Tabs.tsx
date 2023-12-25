@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -10,7 +10,6 @@ import Movies from "../../components/Movies/Movies";
 import Directors from "../../components/Directors/Directors";
 
 import withHocs from "./TabsHoc";
-import { CssBaseline } from "@mui/material";
 
 const TabContainer = ({ children, dir }: any) => (
   <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>

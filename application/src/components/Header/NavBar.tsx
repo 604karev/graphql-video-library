@@ -1,7 +1,6 @@
 import {
   AppBar,
   Box,
-  Button,
   Container,
   IconButton,
   Menu,
@@ -11,17 +10,13 @@ import {
   Link,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useLocation, useNavigate } from "react-router-dom";
 import { MouseEvent, useState } from "react";
 import { useAuth } from "hooks/useAuth";
 
 function NavBar() {
-  const { pathname } = useLocation();
   const { authToken } = useAuth();
   const { logout } = useAuth();
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
-  const navigate = useNavigate();
 
   const handleOpenNavMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);

@@ -27,19 +27,13 @@ const LoginForm = () => {
   const { pathname } = useLocation();
   const isLogin = pathname === "/signin";
 
-  const [
-    signIn,
-    { data: signInData, loading: signInLoading, error: signInError },
-  ] = useMutation(LOGIN_MUTATION, {
+  const [signIn] = useMutation(LOGIN_MUTATION, {
     onCompleted: (signInData) => {
       login(signInData.login.token);
     },
   });
 
-  const [
-    signUp,
-    { data: signUpData, loading: signUpLoading, error: signUpError },
-  ] = useMutation(REGISTER_MUTATION, {
+  const [signUp] = useMutation(REGISTER_MUTATION, {
     onCompleted: (signUpData) => {
       login(signUpData.register.token);
     },
