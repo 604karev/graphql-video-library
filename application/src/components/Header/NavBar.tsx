@@ -12,11 +12,17 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import { MouseEvent, useState } from "react";
 import { useAuth } from "hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 function NavBar() {
   const { authToken } = useAuth();
   const { logout } = useAuth();
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+  const navigate = useNavigate();
+
+  const handleMenuClick = (path: string) => {
+    navigate(path);
+  };
 
   const handleOpenNavMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -34,7 +40,7 @@ function NavBar() {
             variant="h6"
             noWrap
             component="a"
-            href="/"
+            onClick={() => handleMenuClick("/")}
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -43,6 +49,7 @@ function NavBar() {
               letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
+              cursor: "pointer",
             }}
           >
             LOGO
@@ -76,15 +83,11 @@ function NavBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              <MenuItem href="/signin">
-                <Typography component={Link} textAlign="center">
-                  SignIn
-                </Typography>
+              <MenuItem onClick={() => handleMenuClick("/signin")}>
+                <Typography textAlign="center">SignIn</Typography>
               </MenuItem>
-              <MenuItem href="/signup">
-                <Typography component={Link} textAlign="center">
-                  SignUp
-                </Typography>
+              <MenuItem onClick={() => handleMenuClick("/signup")}>
+                <Typography textAlign="center">SignUp</Typography>
               </MenuItem>
               {authToken && (
                 <MenuItem onClick={logout}>
@@ -97,7 +100,7 @@ function NavBar() {
             variant="h5"
             noWrap
             component="a"
-            href="/"
+            onClick={() => handleMenuClick("/")}
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -107,6 +110,7 @@ function NavBar() {
               letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
+              cursor: "pointer",
             }}
           >
             LOGO
@@ -118,10 +122,10 @@ function NavBar() {
               justifyContent: "flex-end",
             }}
           >
-            <MenuItem component={Link} href="/signin">
+            <MenuItem onClick={() => handleMenuClick("/signin")}>
               <Typography textAlign="center">SignIn</Typography>
             </MenuItem>
-            <MenuItem component={Link} href="/signup">
+            <MenuItem onClick={() => handleMenuClick("/signup")}>
               <Typography textAlign="center">SignUp</Typography>
             </MenuItem>
             {authToken && (
