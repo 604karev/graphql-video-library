@@ -6,10 +6,11 @@ import Typography from "@mui/material/Typography";
 import SwipeableViews from "react-swipeable-views";
 import MovieCreationIcon from "@mui/icons-material/MovieCreation";
 import CameraIcon from "@mui/icons-material/Camera";
-import Movies from "../Movies/Movies";
-import Directors from "../Directors/Directors";
+import Movies from "../../components/Movies/Movies";
+import Directors from "../../components/Directors/Directors";
 
 import withHocs from "./TabsHoc";
+import { CssBaseline } from "@mui/material";
 
 const TabContainer = ({ children, dir }: any) => (
   <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
@@ -25,7 +26,7 @@ const SimpleTabs = (props: any) => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" color="primary" enableColorOnDark>
         <Tabs
           textColor="inherit"
           indicatorColor="secondary"

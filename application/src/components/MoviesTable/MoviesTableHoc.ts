@@ -1,9 +1,10 @@
 import { withStyles } from "@mui/styles";
 import { compose } from "recompose";
-import { graphql } from "react-apollo";
+
 import { moviesQuery } from "./queries";
 
 import { styles } from "./styles";
+import { graphql } from "@apollo/react-hoc";
 
 const withGraphQL = graphql(moviesQuery, {
   options: ({ name = "" }: any) => ({

@@ -1,23 +1,20 @@
 import { createTheme } from "@mui/material/styles";
-import blue from "@mui/material/colors/blue";
-import red from "@mui/material/colors/red";
+import { blue, red } from "@mui/material/colors";
 
 export default createTheme({
-  typography: {
-    useNextVariants: true,
-    color: "#fff",
-  },
   palette: {
-    type: "dark",
+    mode: "dark",
     primary: {
       main: "#E535AB",
     },
     secondary: blue,
     error: red,
-    text: "#FFFFFF",
+
     contrastThreshold: 3,
     tonalOffset: 0.2,
-    contrastText: "#fff",
+    background: {
+      default: "#212121",
+    },
   },
   components: {
     MuiFab: {
@@ -56,4 +53,4 @@ export default createTheme({
       },
     },
   },
-} as any);
+});

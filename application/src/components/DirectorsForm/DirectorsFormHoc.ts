@@ -1,6 +1,6 @@
 import { withStyles } from "@mui/styles";
 import { compose } from "recompose";
-import { graphql } from "react-apollo";
+import { graphql } from "@apollo/react-hoc";
 import { addDirectorMutation, updateDirectorMutation } from "./mumations";
 import { directorsQuery } from "../DirectorsTable/queries";
 import { moviesQuery } from "../MoviesTable/queries";

@@ -1,6 +1,6 @@
 import { withStyles } from "@mui/styles";
 import { compose } from "recompose";
-import { graphql } from "react-apollo";
+import { graphql } from "@apollo/react-hoc";
 import { directorsQuery } from "./queries";
 
 import { styles } from "./styles";
