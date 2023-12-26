@@ -83,12 +83,16 @@ function NavBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              <MenuItem onClick={() => handleMenuClick("/signin")}>
-                <Typography textAlign="center">SignIn</Typography>
-              </MenuItem>
-              <MenuItem onClick={() => handleMenuClick("/signup")}>
-                <Typography textAlign="center">SignUp</Typography>
-              </MenuItem>
+              {!authToken && (
+                <>
+                  <MenuItem onClick={() => handleMenuClick("/signin")}>
+                    <Typography textAlign="center">SignIn</Typography>
+                  </MenuItem>
+                  <MenuItem onClick={() => handleMenuClick("/signup")}>
+                    <Typography textAlign="center">SignUp</Typography>
+                  </MenuItem>
+                </>
+              )}
               {authToken && (
                 <MenuItem onClick={logout}>
                   <Typography textAlign="center">LogOut</Typography>
@@ -122,12 +126,16 @@ function NavBar() {
               justifyContent: "flex-end",
             }}
           >
-            <MenuItem onClick={() => handleMenuClick("/signin")}>
-              <Typography textAlign="center">SignIn</Typography>
-            </MenuItem>
-            <MenuItem onClick={() => handleMenuClick("/signup")}>
-              <Typography textAlign="center">SignUp</Typography>
-            </MenuItem>
+            {!authToken && (
+              <>
+                <MenuItem onClick={() => handleMenuClick("/signin")}>
+                  <Typography textAlign="center">SignIn</Typography>
+                </MenuItem>
+                <MenuItem onClick={() => handleMenuClick("/signup")}>
+                  <Typography textAlign="center">SignUp</Typography>
+                </MenuItem>
+              </>
+            )}
             {authToken && (
               <MenuItem onClick={logout}>
                 <Typography textAlign="center">LogOut</Typography>
