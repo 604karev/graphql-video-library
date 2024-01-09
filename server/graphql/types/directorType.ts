@@ -7,13 +7,13 @@ import {
 } from "graphql";
 import MovieType from "./movieType";
 import Movies from "../../models/movie";
+import UserType from "./userType";
 
 export interface IDirector {
-    id: String;
-    name: String;
-    age: Number;
-  }
-  
+  id: String;
+  name: String;
+  age: Number;
+}
 
 const DirectorType = new GraphQLObjectType({
   name: "Director",
@@ -27,6 +27,7 @@ const DirectorType = new GraphQLObjectType({
         return Movies.find({ directorId: id });
       },
     },
+    user: { type: UserType },
   }),
 });
 export default DirectorType;

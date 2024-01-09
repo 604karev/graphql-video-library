@@ -12,9 +12,13 @@ export const addMovie = {
     rate: { type: GraphQLInt },
     watched: { type: GraphQLBoolean },
   },
-  resolve(parent: any, { ...args }: IMovie) {
+  resolve(parent: any, args: IMovie, context: any) {
+    if (!context.userId) {
+      throw new Error("Authentication required");
+    }
     const movie = new Movies({
       ...args,
+      userId: context.userId,
     });
     return movie.save();
   },
@@ -23,8 +27,11 @@ export const addMovie = {
 export const deleteMovie = {
   type: MovieType,
   args: { id: { type: GraphQLID } },
-  resolve(parent: any, { id }: IMovie) {
-    return Movies.findOneAndDelete({ _id: id });
+  resolve(parent: any, { id }: IMovie, context: any) {
+    if (!context.userId) {
+      throw new Error("Authentication required");
+    }
+    return Movies.findOneAndDelete({ _id: id, userId: context.userId });
   },
 };
 
@@ -38,11 +45,14 @@ export const updateMovie = {
     rate: { type: GraphQLInt },
     watched: { type: GraphQLBoolean },
   },
-  resolve(parent: any, { id, ...movieProps }: IMovie) {
+  resolve(parent: any, { id, ...movieProps }: IMovie, context: any) {
+    if (!context.userId) {
+      throw new Error("Authentication required");
+    }
     return Movies.findOneAndUpdate(
-      { _id: id },
+      { _id: id, userId: context.userId },
       { $set: { ...movieProps } },
-      { new: true, useFindAndModify: false }
+      { new: true }
     );
   },
 };

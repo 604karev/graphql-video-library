@@ -7,6 +7,7 @@ import {
 } from "graphql";
 import DirectorType from "./directorType";
 import Directors from "../../models/director";
+import UserType from "./userType";
 
 export interface IMovie {
   id: String;
@@ -15,6 +16,7 @@ export interface IMovie {
   directorId: String;
   rate: Number;
   watched: Boolean;
+  userId: String;
 }
 
 const MovieType: any = new GraphQLObjectType({
@@ -32,6 +34,7 @@ const MovieType: any = new GraphQLObjectType({
         return Directors.findById(directorId);
       },
     },
+    user: { type: UserType }
   }),
 });
 
